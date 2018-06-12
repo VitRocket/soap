@@ -1,4 +1,4 @@
-package com.example.service;
+package com.example.soap.config;
 
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
@@ -23,11 +23,11 @@ public class WebServiceConfig {
         return new ServletRegistrationBean(messageDispatcherServlet, "/ws/*");
     }
 
-    @Bean(name = "students")
+    @Bean(name = "student")
     public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema studentsSchema) {
         DefaultWsdl11Definition definition = new DefaultWsdl11Definition();
         definition.setPortTypeName("StudentPort");
-        definition.setTargetNamespace("http://example.com/students");
+        definition.setTargetNamespace("http://example.com/soap/student");
         definition.setLocationUri("/ws");
         definition.setSchema(studentsSchema);
         return definition;
@@ -35,6 +35,6 @@ public class WebServiceConfig {
 
     @Bean
     public XsdSchema studentsSchema() {
-        return new SimpleXsdSchema(new ClassPathResource("student-details.xsd"));
+        return new SimpleXsdSchema(new ClassPathResource("student.xsd"));
     }
 }
