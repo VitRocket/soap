@@ -1,8 +1,10 @@
-# soap
-Demo soap
+# soapserver
+Demo soap server
 
 generate resources from student.xsd
+```
 mvn generate-sources
+```
 
 
 You may use Wizdler
