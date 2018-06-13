@@ -23,18 +23,35 @@ public class WebServiceConfig {
         return new ServletRegistrationBean(messageDispatcherServlet, "/ws/*");
     }
 
-    @Bean(name = "student")
-    public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema studentsSchema) {
-        DefaultWsdl11Definition definition = new DefaultWsdl11Definition();
-        definition.setPortTypeName("StudentPort");
-        definition.setTargetNamespace("http://example.com/soap/student");
-        definition.setLocationUri("/ws");
-        definition.setSchema(studentsSchema);
-        return definition;
+    @Bean
+    public XsdSchema studentSchema() {
+        return new SimpleXsdSchema(new ClassPathResource("student.xsd"));
     }
 
     @Bean
-    public XsdSchema studentsSchema() {
+    public XsdSchema addressSchema() {
         return new SimpleXsdSchema(new ClassPathResource("student.xsd"));
     }
+
+    @Bean(name = "student")
+    public DefaultWsdl11Definition studentWsdl11Definition(XsdSchema studentSchema) {
+        DefaultWsdl11Definition definition = new DefaultWsdl11Definition();
+        definition.setPortTypeName("StudentPort");
+        definition.setTargetNamespace("http://example.com/soap/model");
+        definition.setLocationUri("/ws");
+        definition.setSchema(studentSchema);
+        return definition;
+    }
+
+    @Bean(name = "address")
+    public DefaultWsdl11Definition addressWsdl11Definition(XsdSchema addressSchema) {
+        DefaultWsdl11Definition definition = new DefaultWsdl11Definition();
+        definition.setPortTypeName("AddressPort");
+        definition.setTargetNamespace("http://example.com/soap/model");
+        definition.setLocationUri("/ws");
+        definition.setSchema(addressSchema);
+        return definition;
+    }
+
+
 }

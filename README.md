@@ -13,7 +13,7 @@ https://chrome.google.com/webstore/detail/wizdler/oebpmncolmhiapingjaagmapififia
 
 
 http://localhost:8181/ws/student.wsdl
-
+http://localhost:8181/ws/address.wsdl
 
 ### client example
 https://github.com/VitRocket/soapclient
