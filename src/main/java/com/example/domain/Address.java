@@ -8,11 +8,11 @@ import lombok.RequiredArgsConstructor;
 @Data
 @RequiredArgsConstructor
 @NoArgsConstructor
-public class Student {
+public class Address {
     private Integer id;
     @NonNull
-    private String name;
+    private String country;
     @NonNull
-    private String email;
-    private Address address;
+    private String zip;
+
 }
